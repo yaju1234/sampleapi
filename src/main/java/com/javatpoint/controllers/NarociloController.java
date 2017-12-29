@@ -46,9 +46,12 @@ public class NarociloController {
 		if (dao.isSobaidExists(sobaId)) {
 
 			jsonObject.put("status", false);
-			jsonObject.put("message", "sobaid already exist");
+			jsonObject.put("message", "sobaid already added ");
 
-		} else {
+		} else if(dao.isSobaidExistsInSobaTable(sobaId)){
+			jsonObject.put("status", false);
+			jsonObject.put("message", "sobaid does not exist in soba table");
+		}else {
 
 			int val = dao.save(narocilo);
 			if (val == 1) {

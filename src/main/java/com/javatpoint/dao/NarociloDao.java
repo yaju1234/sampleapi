@@ -40,6 +40,21 @@ public class NarociloDao {
 
 		return result;
 	}
+	
+	
+	public boolean isSobaidExistsInSobaTable(int sobaid) {
+
+		String sql = "SELECT count(*) FROM soba WHERE SobaId = ?";
+		boolean result = false;
+
+		int count = template.queryForObject(sql, new Object[] { sobaid }, Integer.class);
+
+		if (count > 0) {
+			result = true;
+		}
+
+		return result;
+	}
 
 	// check narcolioid exist or not
 	public boolean isNarcolioidExists(int narociloId) {
