@@ -43,7 +43,7 @@ public class NarociloController {
 		java.sql.Timestamp ourJavaTimestampObject = new java.sql.Timestamp(calendar.getTime().getTime());
 		narocilo.setDatumPopravila(ourJavaTimestampObject);
 
-		if(dao.isSobaidExistsInSobaTable(sobaId)){
+		if(!dao.isSobaidExistsInSobaTable(sobaId)){
 			jsonObject.put("status", false);
 			jsonObject.put("message", "sobaid does not exist in soba table");
 		}
