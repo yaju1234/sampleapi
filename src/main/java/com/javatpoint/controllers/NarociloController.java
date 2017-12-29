@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -75,8 +76,8 @@ public class NarociloController {
 	 * @return
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/listOfNarocilos",method = RequestMethod.POST)
-	public @ResponseBody String listOfNarocilos() throws IOException {
+	@RequestMapping(value = "/listOfNarocilos",method = RequestMethod.GET)
+	public @ResponseBody String listOfNarocilos(){
 		System.out.println("Reach here11");
 		List<Narocilo> listNarocilo = dao.getNarocilo();
 		
@@ -114,8 +115,8 @@ public class NarociloController {
 	
 	
 	
-	@RequestMapping(value = "/deleteNarocilosById",method = RequestMethod.POST)
-	public @ResponseBody String deleteNarocilosById(@RequestParam("narociloId") int narociloId)  {
+	@RequestMapping(value = "/deleteNarocilosById/{narociloId}",method = RequestMethod.DELETE)
+	public @ResponseBody String deleteNarocilosById(@PathVariable("narociloId") int narociloId)  {
 		
 		
 		
@@ -195,8 +196,8 @@ public class NarociloController {
 	 * @return
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/listOfSobas",method = RequestMethod.POST)
-	public @ResponseBody String listOfSobas() throws IOException {
+	@RequestMapping(value = "/listOfSobas",method = RequestMethod.GET)
+	public @ResponseBody String listOfSobas() {
 		System.out.println("Reach here11");
 		List<Soba> listSoba = dao.getSoba();
 		
